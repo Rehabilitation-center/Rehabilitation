@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White Label | Центр медицинской реабилитации в Алматы</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0A6EBD;
+      --primary-dark: #075a9e;
+      --primary-light: #e8f2fc;
+      --accent: #2E8B57;
+      --accent-light: #e6f5ed;
+      --text-dark: #1a2b3c;
+      --text-body: #3e4a5a;
+      --text-light: #6b7a8c;
+      --bg-white: #ffffff;
+      --bg-soft: #f8fafc;
+      --bg-muted: #eef2f6;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.08);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text-body);
+      background: var(--bg-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+    h1, h2, h3, h4 { color: var(--text-dark); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+    h3 { font-size: 1.25rem; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .nav-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; color: var(--text-body); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-cta {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .header-cta:hover { background: var(--primary-dark); }
+
+    .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(10,110,189,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-title { margin-bottom: 20px; }
+    .hero-title span { color: var(--primary); }
+    .hero-subtitle { font-size: 1.1rem; color: var(--text-light); margin-bottom: 32px; max-width: 540px; }
+    .hero-stats { display: flex; gap: 40px; margin-bottom: 40px; }
+    .stat-item .stat-value { font-size: 1.8rem; font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+    .stat-item .stat-label { font-size: 0.8rem; color: var(--text-light); }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dark);
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 2px solid var(--border);
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--primary); background: var(--primary-light); }
+
+    .hero-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+      background: var(--bg-muted);
+    }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .section-header p { color: var(--text-light); margin-top: 12px; }
+
+    /* ===== CONCEPTS ===== */
+    .concept-tabs {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-soft);
+      padding: 6px;
+      border-radius: 100px;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .concept-tab {
+      flex: 1;
+      min-width: 180px;
+      padding: 12px 20px;
+      border: none;
+      background: transparent;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .concept-tab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow-sm); }
+
+    .concept-panel { display: none; background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: var(--shadow-md); overflow: hidden; }
+    .concept-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; padding: 32px; }
+    .concept-card { background: var(--bg-soft); border-radius: var(--radius-sm); padding: 20px; }
+    .concept-card h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 8px; }
+    .concept-card p { font-size: 0.95rem; color: var(--text-dark); }
+
+    /* ===== ACCORDION ===== */
+    .accordion { display: flex; flex-direction: column; gap: 12px; max-width: 900px; margin: 0 auto; }
+    .accordion-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .accordion-trigger:hover { background: var(--bg-soft); }
+    .accordion-trigger i { transition: transform 0.2s; color: var(--text-light); }
+    .accordion-item.open .accordion-trigger i { transform: rotate(180deg); }
+
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 24px; }
+    .accordion-item.open .accordion-content { max-height: 1200px; padding: 0 24px 24px; }
+    .accordion-content p, .accordion-content ul { font-size: 0.95rem; color: var(--text-body); margin-bottom: 12px; }
+    .accordion-content ul { padding-left: 20px; }
+    .accordion-content li { margin-bottom: 6px; }
+    .accordion-content strong { color: var(--text-dark); }
+
+    .link-out {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .link-out:hover { text-decoration: underline; }
+
+    /* ===== EQUIPMENT TABS ===== */
+    .equip-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px; }
+    .equip-tab {
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-body);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .equip-tab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .equip-tab:hover:not(.active) { border-color: var(--primary); color: var(--primary); }
+
+    .equip-panel { display: none; }
+    .equip-panel.active { display: block; animation: fadeIn 0.25s ease; }
+
+    .equip-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .equip-card h4 { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .equip-card .area-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-left: 4px;
+    }
+    .equip-card .equip-note { font-size: 0.85rem; color: var(--text-light); margin-bottom: 18px; }
+    .equip-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .equip-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.9rem;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .equip-list li:last-child { border-bottom: none; }
+    .equip-list i { color: var(--accent); font-size: 0.75rem; margin-top: 5px; flex-shrink: 0; }
+
+    /* ===== STEPS / SEQUENCE ===== */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    .step-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 28px; transition: box-shadow 0.2s; position: relative; }
+    .step-card:hover { box-shadow: var(--shadow-md); }
+    .step-number { width: 40px; height: 40px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; }
+    .step-card h4 { margin-bottom: 8px; }
+    .step-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+    .step-card .step-purpose { font-size: 0.85rem; color: var(--primary-dark); background: var(--primary-light); padding: 10px; border-radius: var(--radius-sm); font-weight: 500; }
+
+    /* ===== BUDGET TABLE ===== */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--border); background: #fff; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th { background: var(--bg-soft); text-align: left; padding: 16px 20px; font-weight: 600; color: var(--text-dark); border-bottom: 1px solid var(--border); }
+    td { padding: 16px 20px; border-bottom: 1px solid var(--border); color: var(--text-body); }
+    tr:last-child td { border-bottom: none; }
+
+    /* ===== STAFF ===== */
+    .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .staff-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; }
+    .staff-card h4 { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .staff-list { list-style: none; }
+    .staff-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; font-size: 0.9rem; color: var(--text-body); }
+    .staff-list i { color: var(--accent); font-size: 0.8rem; margin-top: 5px; flex-shrink: 0; }
+    .staff-info { display: flex; flex-direction: column; }
+    .staff-role { font-weight: 500; color: var(--text-dark); margin-bottom: 2px; }
+    .staff-salary { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+    .staff-note {
+      margin-top: 24px;
+      padding: 20px;
+      background: var(--primary-light);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--primary-dark);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .staff-note i { margin-top: 3px; }
+
+    /* ===== CONTACT ===== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-info-list { list-style: none; margin-top: 24px; }
+    .contact-info-list li { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; font-size: 0.95rem; }
+    .contact-info-list i { width: 40px; height: 40px; background: var(--primary-light); color: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+    .contact-form { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--shadow-sm); }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--bg-soft);
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); background: #fff; }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--text-dark); color: #a0b0c0; padding: 48px 0 24px; font-size: 0.85rem; }
+    .footer a { color: #a0b0c0; text-decoration: none; }
+    .footer a:hover { color: #fff; }
+    .footer-disclaimer { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 32px; padding-top: 24px; font-size: 0.8rem; color: #6b7a8c; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+      }
+      .nav-links.open { display: flex; }
+      .mobile-toggle { display: block; }
+      .header-cta { display: none; }
+      .hero-stats { gap: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 56px 0; }
+      .concept-tabs { flex-direction: column; border-radius: var(--radius-md); }
+      .concept-tab { min-width: auto; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-primary, .hero-actions .btn-outline { width: 100%; justify-content: center; }
+      .equip-tabs { flex-direction: column; align-items: stretch; }
+      .equip-tab { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon"><i class="fas fa-heartbeat"></i></span>
+        <span>White Label <span style="font-weight:400;color:var(--text-light);">Алматы</span></span>
+      </a>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#concepts">Концепции</a></li>
+          <li><a href="#regulations">Нормативы</a></li>
+          <li><a href="#protocols">Протоколы</a></li>
+          <li><a href="#premises">Помещения</a></li>
+          <li><a href="#project">Проекты</a></li>
+          <li><a href="#equipment">Оснащение</a></li>
+          <li><a href="#documents">Лицензия</a></li>
+          <li><a href="#budget">Бюджет</a></li>
+          <li><a href="#staff">Команда</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="header-cta">Записаться</a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Меню"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1 class="hero-title">White Label — центр <span>медицинской реабилитации</span> в Алматы</h1>
+        <p class="hero-subtitle">Площадь 457,16 м², цокольный этаж. Амбулаторный формат без ГОБМП и ОСМС. Четыре концепции, нормативная база РК, проектирование, лицензирование и бюджет.</p>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-value">457,16 м²</div><div class="stat-label">общая площадь</div></div>
+          <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">помещений</div></div>
+          <div class="stat-item"><div class="stat-value">14–18</div><div class="stat-label">человек в штате</div></div>
+        </div>
+        <div class="hero-actions">
+          <a href="#concepts" class="btn-primary">Выбрать концепцию <i class="fas fa-arrow-right"></i></a>
+          <a href="#project" class="btn-outline">Проектная документация</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="White Label — Реабилитационный центр" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONCEPTS ===== -->
+  <section class="section" id="concepts">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Варианты развития</span>
+        <h2>Четыре концепции под вашу планировку</h2>
+        <p>Согласно Стандарту организации оказания медицинской реабилитации (Приказ МЗ РК № 65), амбулаторный формат позволяет проводить 3-й этап реабилитации.</p>
+      </div>
+      <div class="concept-tabs" role="tablist">
+        <button class="concept-tab active" data-concept="A">А: Ортопедия</button>
+        <button class="concept-tab" data-concept="B">Б: Многопрофильная</button>
+        <button class="concept-tab" data-concept="C">В: Спортивная медицина</button>
+        <button class="concept-tab" data-concept="D">Г: Партнерство</button>
+      </div>
+
+      <div class="concept-panel active" id="concept-A">
+        <div class="concept-grid">
+          <div class="concept-card"><h4>Целевая аудитория</h4><p>Пациенты после эндопротезирования, артроскопии, переломов, с грыжами дисков и болями в спине.</p></div>
+          <div class="concept-card"><h4>Большой зал ЛФК (192 м²)</h4><p>Декомпрессионные тренажёры (Бубновский), подвесные системы (Redcord/Экзарта), зона роботизированной механотерапии.</p></div>
+          <div class="concept-card"><h4>Малый зал ЛФК (56,01 м²)</h4><p>Кабинет мануальной терапии, остеопатии и индивидуальной кинезитерапии.</p></div>
+          <div class="concept-card"><h4>Процедурная (37,8 м²)</h4><p>Аппаратная физиотерапия: УВТ, высокоинтенсивный лазер (HILT), магнитотерапия, электротерапия, <strong>ЭМС</strong>.</p></div>
+          <div class="concept-card"><h4>Процедурная (20,62 м²)</h4><p>Инвазивные манипуляции: внутрисуставные инъекции, PRP-терапия, блокады, в/в и в/м инъекции.</p></div>
+          <div class="concept-card"><h4>Врачебные кабинеты (6)</h4><p>Реабилитолог (ФРМ), травматолог-ортопед, невролог-вертебролог, УЗИ суставов, лечебный массаж, кабинет главврача.</p></div>
+        </div>
+      </div>
+
+      <div class="concept-panel" id="concept-B">
+        <div class="concept-grid">
+          <div class="concept-card"><h4>Целевая аудитория</h4><p>Пациенты после инсультов, ЧМТ, операций на позвоночнике, с хроническими болевыми синдромами.</p></div>
+          <div class="concept-card"><h4>Большой зал ЛФК (192 м²)</h4><p>Две зоны: механотерапия (локомоторные тренажёры, вертикализатор) и индивидуальная кинезитерапия.</p></div>
+          <div class="concept-card"><h4>Малый зал ЛФК (56,01 м²)</h4><p>Зал эрготерапии и восстановления мелкой моторики / бытовых навыков (обязателен по Стандарту № 65).</p></div>
+          <div class="concept-card"><h4>Процедурная (37,8 м²)</h4><p>Комплексный физиотерапевтический блок: магнит, лазер, электрофорез, прессотерапия, парафинотерапия, <strong>ЭМС</strong>.</p></div>
+          <div class="concept-card"><h4>Процедурная (20,62 м²)</h4><p>Инъекционная терапия, капельницы, перевязки по показаниям.</p></div>
+          <div class="concept-card"><h4>Врачебные кабинеты (6)</h4><p>ФРМ, невролог, терапевт/кардиолог, медицинский психолог и логопед-афазиолог, лечебный массаж, ординаторская.</p></div>
+        </div>
+      </div>
+
+      <div class="concept-panel" id="concept-C">
+        <div class="concept-grid">
+          <div class="concept-card"><h4>Целевая аудитория</h4><p>Спортсмены-любители и профи, офисные клиенты с хронической усталостью, гости СПА-комплекса.</p></div>
+          <div class="concept-card"><h4>Большой зал ЛФК (192 м²)</h4><p>Функциональный реабилитационный фитнес, диагностика биомеханики бега/ходьбы, групповая лечебная гимнастика.</p></div>
+          <div class="concept-card"><h4>Малый зал ЛФК (56,01 м²)</h4><p>Кабинет стретчинга, PNF-терапии и постизометрической релаксации.</p></div>
+          <div class="concept-card"><h4>Процедурная (37,8 м²)</h4><p>Физиотерапия и аппаратное восстановление: криотерапия, прессотерапия, УВТ, текар-терапия, <strong>ЭМС</strong>.</p></div>
+          <div class="concept-card"><h4>Процедурная (20,62 м²)</h4><p>Инфузионная витаминотерапия / IV-терапия, PRP-терапия.</p></div>
+          <div class="concept-card"><h4>Врачебные кабинеты (6)</h4><p>Врач спортивной медицины и ФРМ, травматолог-ортопед, диетолог/нутрициолог + функциональная диагностика, массаж, рефлексотерапия, административный кабинет.</p></div>
+        </div>
+      </div>
+
+      <div class="concept-panel" id="concept-D">
+        <div class="concept-grid">
+          <div class="concept-card"><h4>Суть концепции</h4><p>Собственник помещения за свой счет приводит объект в полное соответствие с требованиями СанПиН и лицензирования (проектирование, ремонт, инженерия).</p></div>
+          <div class="concept-card"><h4>Роль партнера</h4><p>Оператор (партнер) берет на себя получение лицензии, подбор и оплату персонала, закупку оборудования и операционное управление.</p></div>
+          <div class="concept-card"><h4>Условия партнерства</h4><p>Долгосрочная аренда с пониженной ставкой на период окупаемости, либо совместное предприятие (доля в прибыли или совместное владение бизнесом).</p></div>
+          <div class="concept-card"><h4>Преимущества</h4><p>Собственник получает гарантированный долгосрочный доход и капитализацию недвижимости. Партнер минимизирует капитальные затраты на этапе старта.</p></div>
+          <div class="concept-card"><h4>Распределение задач</h4><p>Собственник: ремонт, вентиляция, электрика, водоснабжение, МГН. Партнер: лицензия, СЭЗ, кадры, оборудование, маркетинг.</p></div>
+          <div class="concept-card"><h4>Юридическая форма</h4><p>Договор аренды с инвестиционными условиями, договор простого товарищества (консорциум) или создание совместного ТОО.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REGULATIONS ===== -->
+  <section class="section" id="regulations" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Правовая основа</span>
+        <h2>Нормативная база Республики Казахстан</h2>
+        <p>Ссылки на официальные тексты НПА на портале ИПС «Әділет» (adilet.zan.kz).</p>
+      </div>
+      <div class="accordion" id="accordionRegulations">
+        <div class="accordion-item">
+          <button class="accordion-trigger">Кодекс РК «О здоровье народа и системе здравоохранения» № 360-VI <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>От 7 июля 2020 года. Статьи 20, 125 — устанавливают обязательность санитарно-эпидемиологического заключения (СЭЗ) и государственной лицензии для медицинской реабилитации.</p>
+            <a href="https://adilet.zan.kz/rus/docs/K2000000360" target="_blank" rel="noopener" class="link-out">Смотреть на Әділет <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Закон РК «О разрешениях и уведомлениях» № 202-V <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>От 16 мая 2014 года. Относит медицинскую деятельность к 1-й категории разрешений (лицензируемый вид деятельности с подвидами).</p>
+            <a href="https://adilet.zan.kz/rus/docs/Z1400000202" target="_blank" rel="noopener" class="link-out">Смотреть на Әділет <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Стандарт организации оказания медицинской реабилитации (Приказ МЗ РК № 65) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>От 7 апреля 2023 года, зарегистрирован в МЮ РК № 32263. Определяет этапы реабилитации, состав МДК и минимальный стандарт оснащения кабинетов.</p>
+            <a href="https://adilet.zan.kz/rus/docs/V2300032263" target="_blank" rel="noopener" class="link-out">Смотреть на Әділет <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Санитарные правила № ҚР ДСМ-96/2020 <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Утверждены Приказом МЗ РК от 11 августа 2020 года, зарегистрированы в МЮ РК № 21080. Регулируют размещение помещений в цокольных этажах, вентиляцию, отделку, мокрые точки и обращение с медотходами.</p>
+            <a href="https://adilet.zan.kz/rus/docs/V2000021080" target="_blank" rel="noopener" class="link-out">Смотреть на Әділет <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Квалификационные требования (Приказ МЗ РК № ҚР ДСМ-148/2020) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>От 22 октября 2020 года, зарегистрирован в МЮ РК № 21502. Устанавливает требования к персоналу, оборудованию и помещению для получения лицензии.</p>
+            <a href="https://adilet.zan.kz/rus/docs/V2000021502" target="_blank" rel="noopener" class="link-out">Смотреть на Әділет <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROTOCOLS & ICD-10 ===== -->
+  <section class="section" id="protocols">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Клинические протоколы и МКБ-10</span>
+        <h2>Стандарт реабилитации: коды и алгоритмы</h2>
+        <p>Клинический протокол — это документ, который на основании кода МКБ-10 и шкалы функционирования (МКФ) определяет перечень обязательных процедур, их длительность и ожидаемые результаты.</p>
+      </div>
+      <div class="accordion" id="accordionProtocols">
+        <div class="accordion-item open">
+          <button class="accordion-trigger">Что такое клинический протокол по МКБ-10 <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p><strong>МКБ-10</strong> (Международная классификация болезней 10-го пересмотра) используется для кодирования основного диагноза.</p>
+            <p><strong>Клинический протокол</strong> — нормативный документ, который для каждого кода МКБ-10 устанавливает:</p>
+            <ul>
+              <li>Этап реабилитации (второй, третий).</li>
+              <li>Длительность курса в рабочих днях.</li>
+              <li>Обязательный перечень диагностических и лечебных процедур.</li>
+              <li>Требования к квалификации персонала.</li>
+              <li>Критерии эффективности и завершения курса.</li>
+            </ul>
+            <p>В РК структура и порядок разработки клинических протоколов регулируются Приказом МЗ РК № 108 от 19 декабря 2024 года.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Примеры кодов МКБ-10 в реабилитации <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <div class="table-wrap" style="margin-top: 16px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Код МКБ-10</th>
+                    <th>Название</th>
+                    <th>Когда применяется</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Z50.8</strong></td><td>В личном анамнезе реабилитационные процедуры</td><td>Общий код для курсов восстановительного лечения.</td></tr>
+                  <tr><td><strong>Z54.0</strong></td><td>Состояние выздоровления после хирургического вмешательства</td><td>Реабилитация после операций (эндопротезирование, артроскопия).</td></tr>
+                  <tr><td><strong>Z96.6</strong></td><td>Наличие имплантатов ортопедических суставов</td><td>Восстановление после замены сустава.</td></tr>
+                  <tr><td><strong>Z92.5</strong></td><td>В личном анамнезе реабилитационные процедуры</td><td>Повторные курсы или поддерживающая терапия.</td></tr>
+                  <tr><td><strong>Z86.6</strong></td><td>В личном анамнезе болезни нервной системы</td><td>Реабилитация после инсульта, ЧМТ, неврологических операций.</td></tr>
+                  <tr><td><strong>Z86.7</strong></td><td>В личном анамнезе болезни системы кровообращения</td><td>Кардиореабилитация после инфаркта или операций на сердце.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Шкала реабилитационной маршрутизации (ШРМ) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>ШРМ — инструмент, оценивающий степень нарушения функций и определяющий этап и интенсивность реабилитации.</p>
+            <ul>
+              <li><strong>ШРМ-1:</strong> Легкие нарушения. Амбулаторный этап (третий этап).</li>
+              <li><strong>ШРМ-2:</strong> Умеренные нарушения. Амбулаторный или стационарный этап.</li>
+              <li><strong>ШРМ-3:</strong> Выраженные нарушения. Стационарный этап.</li>
+              <li><strong>ШРМ-4:</strong> Грубые нарушения. Специализированный стационар.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PREMISES ===== -->
+  <section class="section" id="premises" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Цокольный этаж 457,16 м²</span>
+        <h2>Требования к помещениям</h2>
+        <p>Критические параметры для прохождения СЭС и лицензирования.</p>
+      </div>
+      <div class="accordion" id="accordionPremises">
+        <div class="accordion-item open">
+          <button class="accordion-trigger">Разрешённые помещения в цоколе <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Санитарные правила № ҚР ДСМ-96/2020 допускают размещение в цокольных этажах: залы ЛФК, кабинеты физиотерапии, массажа, водолечения, гардеробные, санитарно-бытовые помещения и кладовые.</p>
+            <p><strong>Ограничение:</strong> врачебные кабинеты с постоянным пребыванием персонала должны иметь естественное освещение (окна/приямки, КЕО). Кабинеты без окон используются под физиотерапию, массаж, раздевалки или УЗИ.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Мокрые точки и отделка <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content"><p>В каждом врачебном кабинете, процедурной и кабинете массажа — раковина с горячей/холодной водой и локтевым (бесконтактным) смесителем. Стены и полы: гладкие влагостойкие поверхности, устойчивые к влажной уборке и дезинфицирующим средствам.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Доступная среда (МГН) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content"><p>Пандус или вертикальный подъёмник на цокольный этаж, дверные проёмы шириной не менее 0,9 м без порогов, минимум один специализированный санузел для маломобильных граждан (с поручнями и кнопкой вызова персонала).</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Медотходы и уборочный инвентарь <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content"><p>Отдельное помещение (7,94 м²) с вытяжкой и холодильником/контейнерами для временного хранения медицинских отходов классов А и Б. Изолированный шкаф/комната для хранения уборочного инвентаря и дезсредств.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT DOCUMENTATION ===== -->
+  <section class="section" id="project">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Инженерная подготовка</span>
+        <h2>Проектная документация</h2>
+        <p>Перечень проектов, разрабатываемых специализированными организациями до начала чистовой отделки.</p>
+      </div>
+      <div class="accordion" id="accordionProject">
+        <div class="accordion-item open">
+          <button class="accordion-trigger">Проект вентиляции и кондиционирования <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Разрабатывается проектной организацией с соответствующим аттестатом. Включает:</p>
+            <ul>
+              <li>Расчёт кратности воздухообмена для каждого помещения.</li>
+              <li>Схему прокладки воздуховодов и размещение приточно-вытяжных установок.</li>
+              <li>Спецификацию оборудования.</li>
+              <li>Аэродинамические расчёты.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Проект электроснабжения (с заземлением) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Обязателен для физиотерапевтического кабинета (37,8 м²). Предусматривает:</p>
+            <ul>
+              <li>Отдельный контур защитного заземления.</li>
+              <li>Розеточные группы с УЗО.</li>
+              <li>Расчёт нагрузок на каждую единицу оборудования.</li>
+              <li>Аварийное освещение.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Проект водоснабжения и канализации <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Необходим для подвода воды к раковинам с локтевыми смесителями. Включает схему разводки, точки водоотведения, установку водонагревателей.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Адаптация помещений для маломобильных граждан (МГН) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Раздел проекта, предусматривающий установку пандуса или подъёмника, расширение дверных проёмов до 0,9 м, монтаж поручней и кнопок вызова.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EQUIPMENT ===== -->
+  <section class="section" id="equipment" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Оснащение по кабинетам</span>
+        <h2>Оборудование для каждого помещения</h2>
+        <p>Перечень сформирован на основе Стандарта № 65 и данных ведомости площадей.</p>
+      </div>
+
+      <div class="equip-tabs" role="tablist">
+        <button class="equip-tab active" data-equip="room-frm">Кабинет ФРМ / реабилитолога</button>
+        <button class="equip-tab" data-equip="room-lfk-big">Зал ЛФК (192 м²)</button>
+        <button class="equip-tab" data-equip="room-lfk-small">Малый зал ЛФК (56 м²)</button>
+        <button class="equip-tab" data-equip="room-physio">Физиотерапия (37,8 м²)</button>
+        <button class="equip-tab" data-equip="room-proc">Процедурная (20,62 м²)</button>
+        <button class="equip-tab" data-equip="room-massage">Массаж</button>
+        <button class="equip-tab" data-equip="room-ergo">Эрготерапия</button>
+      </div>
+
+      <div class="equip-panel active" id="room-frm">
+        <div class="equip-card">
+          <h4><i class="fas fa-user-md" style="color: var(--primary);"></i> Кабинет врача ФРМ / реабилитолога <span class="area-badge">14,07–16,68 м²</span></h4>
+          <p class="equip-note">Обязательный минимум для консультативного приёма.</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Тонометр (автоматический/механический)</li>
+            <li><i class="fas fa-check"></i> Спирометр портативный</li>
+            <li><i class="fas fa-check"></i> Пульсоксиметр</li>
+            <li><i class="fas fa-check"></i> Медицинские весы</li>
+            <li><i class="fas fa-check"></i> Ростомер</li>
+            <li><i class="fas fa-check"></i> Кресло-каталка</li>
+            <li><i class="fas fa-check"></i> Неврологический молоточек</li>
+            <li><i class="fas fa-check"></i> Гониометр (угломер для суставов)</li>
+            <li><i class="fas fa-check"></i> Кушетка смотровая</li>
+            <li><i class="fas fa-check"></i> Бактерицидный облучатель-рециркулятор</li>
+            <li><i class="fas fa-check"></i> Ширма медицинская</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-lfk-big">
+        <div class="equip-card">
+          <h4><i class="fas fa-dumbbell" style="color: var(--primary);"></i> Большой зал ЛФК / кинезиотерапии <span class="area-badge">192 м²</span></h4>
+          <p class="equip-note">Основная зона механотерапии и групповых занятий (согласно Стандарту № 65).</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Беговая дорожка реабилитационная</li>
+            <li><i class="fas fa-check"></i> Реабилитационные тренажёры (активная/пассивная разработка конечностей, с БОС)</li>
+            <li><i class="fas fa-check"></i> Аппарат механотерапии с функцией антиспазм</li>
+            <li><i class="fas fa-check"></i> Кушетка реабилитационная (1 на инструктора)</li>
+            <li><i class="fas fa-check"></i> Фитболы, фитнес-резинки</li>
+            <li><i class="fas fa-check"></i> Шведская стенка / брусья реабилитационные</li>
+            <li><i class="fas fa-check"></i> Балансировочные доски и подушки</li>
+            <li><i class="fas fa-check"></i> Тележка первой помощи (укомплектованная)</li>
+            <li><i class="fas fa-check"></i> Портативный аспиратор, дефибриллятор, кислород</li>
+            <li><i class="fas fa-check"></i> Кулер для воды</li>
+            <li><i class="fas fa-check"></i> Кондиционер</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-lfk-small">
+        <div class="equip-card">
+          <h4><i class="fas fa-person-walking" style="color: var(--primary);"></i> Малый зал ЛФК / индивидуальные занятия <span class="area-badge">56,01 м²</span></h4>
+          <p class="equip-note">Кабинет для мануальной терапии, PNF, стретчинга или эрготерапии.</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Кушетка массажная / реабилитационная с электроприводом</li>
+            <li><i class="fas fa-check"></i> Подвесные системы (Redcord / Экзарта)</li>
+            <li><i class="fas fa-check"></i> Балансировочные платформы</li>
+            <li><i class="fas fa-check"></i> Набор для мелкой моторики (при эрготерапии)</li>
+            <li><i class="fas fa-check"></i> Стол для активной тренировки верхних конечностей</li>
+            <li><i class="fas fa-check"></i> Зеркало для контроля движений</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-physio">
+        <div class="equip-card">
+          <h4><i class="fas fa-bolt" style="color: var(--primary);"></i> Кабинет физиотерапии <span class="area-badge">37,8 м²</span></h4>
+          <p class="equip-note">Аппаратная физиотерапия (согласно Стандарту № 65).</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Аппарат для гальванизации и электрофореза</li>
+            <li><i class="fas fa-check"></i> Аппарат для ультразвуковой терапии (фонофорез)</li>
+            <li><i class="fas fa-check"></i> Аппарат для низкочастотной магнитотерапии</li>
+            <li><i class="fas fa-check"></i> Аппарат лазерной терапии (в т.ч. HILT)</li>
+            <li><i class="fas fa-check"></i> Оборудование для светотерапии / УФО</li>
+            <li><i class="fas fa-check"></i> Аппарат для электротерапии (диадинамические токи, амплипульстерапия)</li>
+            <li><i class="fas fa-check"></i> Ингалятор кислородный</li>
+            <li><i class="fas fa-check"></i> Ингалятор аэрозольный компрессорный (небулайзер)</li>
+            <li><i class="fas fa-check"></i> Аппарат для прессотерапии</li>
+            <li><i class="fas fa-check"></i> Оборудование для парафинотерапии (по профилю)</li>
+            <li><i class="fas fa-check"></i> Бактерицидный облучатель-рециркулятор</li>
+            <li><i class="fas fa-check"></i> Аппарат для ЭМС (электростимуляции мышц)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-proc">
+        <div class="equip-card">
+          <h4><i class="fas fa-syringe" style="color: var(--primary);"></i> Процедурная <span class="area-badge">20,62 м²</span></h4>
+          <p class="equip-note">Инвазивные манипуляции, инъекции, забор крови, установка капельниц.</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Кушетка процедурная</li>
+            <li><i class="fas fa-check"></i> Столик манипуляционный</li>
+            <li><i class="fas fa-check"></i> Медицинский шкаф для лекарств</li>
+            <li><i class="fas fa-check"></i> Холодильник фармацевтический (с термоиндикатором)</li>
+            <li><i class="fas fa-check"></i> Штатив для вливаний</li>
+            <li><i class="fas fa-check"></i> Бактерицидный облучатель-рециркулятор</li>
+            <li><i class="fas fa-check"></i> Укладка при анафилактическом шоке</li>
+            <li><i class="fas fa-check"></i> Раковина с локтевым смесителем</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-massage">
+        <div class="equip-card">
+          <h4><i class="fas fa-hand-sparkles" style="color: var(--primary);"></i> Кабинет медицинского массажа <span class="area-badge">14,07–16,68 м²</span></h4>
+          <p class="equip-note">Лицензируемый медицинский массаж (требуется среднее медицинское образование и сертификат).</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Стол массажный терапевтический с регулировкой высоты</li>
+            <li><i class="fas fa-check"></i> Стул для массажа шейно-воротниковой зоны</li>
+            <li><i class="fas fa-check"></i> Столик процедурный</li>
+            <li><i class="fas fa-check"></i> Валики большой и малый</li>
+            <li><i class="fas fa-check"></i> Раковина с локтевым смесителем</li>
+            <li><i class="fas fa-check"></i> Ширма / кушетка (при необходимости)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="equip-panel" id="room-ergo">
+        <div class="equip-card">
+          <h4><i class="fas fa-puzzle-piece" style="color: var(--primary);"></i> Кабинет эрготерапии / мелкой моторики <span class="area-badge">(малый зал или кабинет)</span></h4>
+          <p class="equip-note">Обязателен при работе с неврологическим контингентом (Стандарт № 65).</p>
+          <ul class="equip-list">
+            <li><i class="fas fa-check"></i> Тренажёр для пальцев и кистей рук</li>
+            <li><i class="fas fa-check"></i> Стол для активной тренировки верхних конечностей</li>
+            <li><i class="fas fa-check"></i> Изделия для мелкой моторики и координации</li>
+            <li><i class="fas fa-check"></i> Набор бытовых адаптационных приспособлений</li>
+            <li><i class="fas fa-check"></i> Зеркало для обратной связи</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOCUMENTS (SEQUENCE + FULL LISTS) ===== -->
+  <section class="section" id="documents">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Пошаговый запуск</span>
+        <h2>Последовательность получения разрешительных документов</h2>
+        <p>Получение СЭЗ и медицинской лицензии в РК переведено в электронный формат. Ниже указана строгая последовательность действий и полные перечни документов.</p>
+      </div>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h4>Аудит помещения и проектирование</h4>
+          <p><strong>Что нужно:</strong> Разработка инженерных проектов (вентиляция, электрика, водоснабжение), приведение помещений в соответствие с СанПиН (отделка, мокрые точки, МГН).</p>
+          <div class="step-purpose"><strong>Для чего:</strong> Без правильно спроектированных инженерных систем и ремонта по нормам, лаборатория не даст положительные протоколы, а СЭС откажет.</div>
+        </div>
+        
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h4>Закупка и монтаж оборудования</h4>
+          <p><strong>Что нужно:</strong> Приобретение медтехники строго с действующими регистрационными удостоверениями РК. Получение актов ввода в эксплуатацию и договоров на сервисное обслуживание.</p>
+          <div class="step-purpose"><strong>Для чего:</strong> Лицензионная комиссия проверяет наличие и легальность оборудования по ведомости оснащения.</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h4>Получение СЭЗ (Санитарно-эпидемиологического заключения)</h4>
+          <p><strong>Что нужно:</strong> Подача заявления на <strong>egov.kz</strong>, приложение техпаспорта, договора аренды, проектов и протоколов лабораторных замеров.</p>
+          <div class="step-purpose"><strong>Для чего:</strong> Подтверждает, что помещение безопасно и соответствует санитарным правилам. Срок рассмотрения — 13 рабочих дней. Бесплатно.</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h4>Получение медицинской лицензии</h4>
+          <p><strong>Что нужно:</strong> Подача на <strong>elicense.kz</strong>: заявление, сведения о соответствии, полученное СЭЗ, документы на персонал и оборудование. Оплата госпошлины (10 МРП).</p>
+          <div class="step-purpose"><strong>Для чего:</strong> Дает законное право оказывать медицинские услуги. Срок рассмотрения — 13 рабочих дней.</div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">05</div>
+          <h4>Внутренние регламенты и договоры</h4>
+          <p><strong>Что нужно:</strong> Заключение договоров на утилизацию медотходов (класс А и Б), дезинсекцию/дератизацию, стирку белья. Разработка ППК (Программы производственного контроля), СОПов.</p>
+          <div class="step-purpose"><strong>Для чего:</strong> Выполнение требований законодательства в процессе операционной деятельности (проверяется при плановых проверках СЭС).</div>
+        </div>
+      </div>
+
+      <div class="accordion" id="accordionDocuments" style="margin-top: 48px;">
+        <div class="accordion-item open">
+          <button class="accordion-trigger">Полный пакет документов для получения СЭЗ (egov.kz) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Подается бесплатно через портал <strong>egov.kz</strong>. Срок оказания услуги — <strong>13 рабочих дней</strong>. В пакет входят:</p>
+            <ul>
+              <li><strong>Электронное заявление</strong>, подписанное ЭЦП руководителя.</li>
+              <li><strong>Протоколы лабораторно-инструментальных исследований</strong> (замеры микроклимата, освещенности, вентиляции, смывы), выполненные аккредитованной лабораторией.</li>
+              <li><strong>Кадастровый или технический паспорт</strong> объекта недвижимости.</li>
+              <li><strong>Договор аренды</strong> или документ, подтверждающий право собственности на помещение.</li>
+              <li><strong>Пояснительная записка</strong> с описанием структуры помещений и потоков пациентов.</li>
+            </ul>
+            <p><em>Примечание: для медицинских центров получение СЭЗ обязательно, так как они относятся к объектам высокой эпидемической значимости.</em></p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">Полный пакет документов для получения медицинской лицензии (elicense.kz) <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Подается через <strong>elicense.kz</strong>. Госпошлина — <strong>10 МРП (43 250 тенге)</strong>, срок рассмотрения — <strong>13 рабочих дней</strong>. Пакет включает:</p>
+            <ul>
+              <li><strong>Заявление</strong> по установленной форме, подписанное ЭЦП.</li>
+              <li><strong>Форма сведений о соответствии квалификационным требованиям</strong>.</li>
+              <li><strong>Документы на помещение</strong>: электронная копия документа о праве собственности, аренды или доверительного управления.</li>
+              <li><strong>Документы на персонал</strong>: копии дипломов о высшем или среднем медицинском образовании, удостоверений о переподготовке или повышении квалификации, документов, подтверждающих трудовую деятельность.</li>
+              <li><strong>Квитанция об оплате</strong> лицензионного сбора.</li>
+              <li><strong>СЭЗ</strong> (полученное на первом этапе).</li>
+              <li><strong>Документы на оборудование</strong>: ведомость оснащения и копии регистрационных удостоверений МЗ РК на медицинские изделия.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger">В каких случаях медицинская лицензия не нужна <i class="fas fa-chevron-down"></i></button>
+          <div class="accordion-content">
+            <p>Медицинская лицензия <strong>не требуется</strong>, если вы оказываете <strong>бытовые услуги</strong>, даже если они связаны с телом человека. Ключевой критерий — <strong>отсутствие лечебной цели</strong>.</p>
+            <p>Основной пример — <strong>бытовой (релаксирующий, косметический, гигиенический) массаж</strong>. Он не преследует лечебных целей и может оказываться без медицинской лицензии в СПА-салонах, фитнес-клубах или студиях.</p>
+            <p>При этом <strong>медицинский (лечебный) массаж</strong> для лечения или реабилитации требует обязательного лицензирования по подвиду «Физиотерапия» или «Массаж».</p>
+            <p>Также лицензия не нужна для видов деятельности, которые прямо <strong>не включены</strong> в перечень лицензируемых подвидов медицинской деятельности, например, для традиционной медицины (в определенных аспектах).</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== BUDGET ===== -->
+  <section class="section" id="budget" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Оснащение</span>
+        <h2>Оборудование и бюджет</h2>
+        <p>Точная смета формируется после запроса коммерческих предложений у дистрибьюторов.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Уровень оснащения</th><th>Ориентировочный бюджет (тенге)</th><th>Состав</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Базовый</strong></td><td>35 000 000 – 55 000 000</td><td>Стандарт по Приказу № 65, аппараты физиотерапии, силовые и декомпрессионные тренажёры.</td></tr>
+            <tr><td><strong>Оптимальный</strong></td><td>75 000 000 – 120 000 000</td><td>Европейская физиотерапия (BTL/Enraf), СРМ-роботы, УВТ, HILT-лазер, подвесные системы, УЗИ.</td></tr>
+            <tr><td><strong>Премиум</strong></td><td>от 150 000 000</td><td>Роботизированная механотерапия, биомеханическая диагностика.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STAFF ===== -->
+  <section class="section" id="staff">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Мультидисциплинарная команда</span>
+        <h2>Штатное расписание и оклады</h2>
+        <p>Ориентировочные рыночные вилки для опытных специалистов в Алматы (2025–2026 гг.).</p>
+      </div>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <h4><i class="fas fa-user-md" style="color: var(--primary); margin-right: 8px;"></i> Врачебный персонал</h4>
+          <ul class="staff-list">
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Главный врач / Зам. по медчасти</span><span class="staff-salary">600 000 – 1 000 000+ ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Врач ФРМ / Реабилитолог</span><span class="staff-salary">400 000 – 1 000 000 ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Врач-невролог</span><span class="staff-salary">300 000 – 550 000+ ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Врач-травматолог-ортопед</span><span class="staff-salary">362 000 – 600 000+ ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Врач-физиотерапевт</span><span class="staff-salary">280 000 – 500 000+ ₸</span></div></li>
+          </ul>
+        </div>
+        
+        <div class="staff-card">
+          <h4><i class="fas fa-user-nurse" style="color: var(--accent); margin-right: 8px;"></i> Специалисты</h4>
+          <ul class="staff-list">
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Инструктор-методист ЛФК / Кинезиотерапевт</span><span class="staff-salary">300 000 – 500 000+ ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Медсестра по физиотерапии</span><span class="staff-salary">250 000 – 350 000 ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Процедурная медсестра</span><span class="staff-salary">270 000 – 350 000+ ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Специалист по медицинскому массажу</span><span class="staff-salary">330 000 – 600 000 ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Медицинский психолог / Эрготерапевт</span><span class="staff-salary">200 000 – 450 000+ ₸</span></div></li>
+          </ul>
+        </div>
+        
+        <div class="staff-card">
+          <h4><i class="fas fa-users" style="color: var(--text-light); margin-right: 8px;"></i> Административный персонал</h4>
+          <ul class="staff-list">
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Администратор ресепшн</span><span class="staff-salary">250 000 – 400 000 ₸</span></div></li>
+            <li><i class="fas fa-check-circle"></i><div class="staff-info"><span class="staff-role">Санитарка</span><span class="staff-salary">180 000 – 250 000 ₸</span></div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="staff-note">
+        <i class="fas fa-info-circle" style="font-size: 1.2rem;"></i>
+        <div>
+          <strong>Примечание по мотивации:</strong> Указанные суммы — это базовые оклады. Для опытных специалистов ключевую роль играет система KPI (процент от выручки, бонусы за удержание пациентов, выполнение плана процедур). Также часть специалистов может привлекаться на условиях совместительства.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section" id="contact" style="background: var(--bg-soft);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Контакты</span>
+        <h2>Обсуждение запуска</h2>
+        <p>Консультации для собственников помещений и инвесторов.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <h3 style="margin-bottom: 16px;">Реквизиты</h3>
+          <ul class="contact-info-list">
+            <li><i class="fas fa-map-marker-alt"></i><div><strong>Адрес:</strong> г. Алматы, цокольный этаж, 457,16 м² (по запросу)</div></li>
+            <li><i class="fas fa-phone-alt"></i><div><strong>Телефон:</strong> +7 (727) XXX-XX-XX</div></li>
+            <li><i class="fas fa-envelope"></i><div><strong>Email:</strong> info@whitelabel.kz</div></li>
+            <li><i class="fas fa-clock"></i><div><strong>Режим работы:</strong> Пн–Сб, 08:00–20:00</div></li>
+          </ul>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Заявка отправлена.');">
+          <div class="form-group"><label for="name">Ваше имя</label><input type="text" id="name" placeholder="Имя" required></div>
+          <div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="form-group"><label for="concept">Интересующая концепция</label>
+            <select id="concept">
+              <option value="A">А: Ортопедия</option>
+              <option value="B">Б: Многопрофильная</option>
+              <option value="C">В: Спортивная медицина</option>
+              <option value="D">Г: Партнерство (Собственник + Оператор)</option>
+              <option value="all">Пока не определился</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="message">Комментарий</label><textarea id="message" rows="3" placeholder="Кратко опишите задачу"></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">Отправить заявку <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <span style="width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;"><i class="fas fa-heartbeat"></i></span>
+            <strong style="color: #fff;">White Label</strong>
+          </div>
+          <p>Запуск частного центра медицинской реабилитации.</p>
+        </div>
+        <div>
+          <strong style="color: #fff; display: block; margin-bottom: 12px;">Документы</strong>
+          <p><a href="#regulations">Нормативная база</a></p>
+          <p><a href="#protocols">Клинические протоколы</a></p>
+          <p><a href="#documents">Лицензирование</a></p>
+          <p><a href="#project">Проектная документация</a></p>
+        </div>
+        <div>
+          <strong style="color: #fff; display: block; margin-bottom: 12px;">Разделы</strong>
+          <p><a href="#equipment">Оснащение</a></p>
+          <p><a href="#budget">Бюджет</a></p>
+          <p><a href="#staff">Штат и оклады</a></p>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <p>© 2026 White Label. Медицинская деятельность подлежит лицензированию. Имеются противопоказания, необходима консультация специалиста.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        const icon = mobileToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      });
+    });
+
+    const conceptTabs = document.querySelectorAll('.concept-tab');
+    const conceptPanels = document.querySelectorAll('.concept-panel');
+    conceptTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const concept = tab.dataset.concept;
+        conceptTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        conceptPanels.forEach(p => p.classList.remove('active'));
+        document.getElementById(`concept-${concept}`).classList.add('active');
+      });
+    });
+
+    const equipTabs = document.querySelectorAll('.equip-tab');
+    const equipPanels = document.querySelectorAll('.equip-panel');
+    equipTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const equipId = tab.dataset.equip;
+        equipTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        equipPanels.forEach(p => p.classList.remove('active'));
+        document.getElementById(equipId).classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
